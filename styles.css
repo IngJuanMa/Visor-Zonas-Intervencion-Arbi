@@ -1,0 +1,70 @@
+/* Estilos para la leyenda */
+.info {
+    padding: 6px 8px;
+    font: 10px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.818);
+    box-shadow: 0 0 18px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+
+.legend h4 {
+    margin: 0 0 10px 0;
+    color: #002F55;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7em;
+}
+
+.legend-color {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.legend-text {
+    font-size: 13px;
+    color: #333;
+}
+
+.info-control{
+    padding: 6px 8px;
+    font: 10px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.819);
+    box-shadow: 0 0 18px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.info-control-title{
+    margin: 0 0 10px 0;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #002F55;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-control-departamento {
+    font-size: 1.5em;
+    color: #002F55;
+    margin-bottom: 0.2em;
+    font-weight: bold;
+    
+}
+
+.info-control-Listitem{
+    font-size: 1.3em;
+    color: #111111;
+    margin-bottom: 0.2em;
+}
