@@ -10,60 +10,61 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png
 
 
 //Pane para organizar capas 
-// var PaneDepartamento = mapa.createPane('departamento');
-// PaneDepartamento.style.zIndex = 300; // Asegurarse de que esté por encima
+ var PaneDepartamento = mapa.createPane('departamento');
+PaneDepartamento.style.zIndex = 400; // Asegurarse de que esté por encima
 
-// var PaneMunicipio = mapa.createPane('municipio');
-// PaneMunicipio.style.zIndex = 400; // Asegurarse de que esté por encima
+var PaneMunicipio = mapa.createPane('municipio');
+PaneMunicipio.style.zIndex = 300; // Asegurarse de que esté por encima
 
 // listado  Municipios intervenidos
 var MunDestacados = [
     //Mps Huila
-    'La Plata', 'Garzón', 'Paicol', 'Neiva', 'Rivera', 'Gigante', 'Aipe', 'Baraya', 'Pitalito','Santa María', 'Acevedo', 'Tello','Timaná','Campoalegre','Hobo','Tesalia','Nátaga','Íquira', 'Yaguará','Agrado','Pital','La Argentina','Colombia','Oporapa',
+    'La Plata', 'Garzón', 'Paicol', 'Neiva', 'Rivera', 'Gigante', 'Aipe', 'Baraya', 'Pitalito', 'Santa María', 'Acevedo', 'Tello', 'Timaná', 'Campoalegre', 'Hobo', 'Tesalia', 'Nátaga', 'Íquira', 'Yaguará', 'Agrado', 'Pital', 'La Argentina', 'Colombia', 'Oporapa',
     //mps Tolima
-    'Ibagué','Melgar',
+    'Ibagué', 'Melgar',
     //Mps Vichada
     'La Primavera',
     //Mps Caldas
-    'Samaná', 'Marulanda', 'Pensilvania', 'La Dorada', 'Manzanares', 'Norcasia', 'Chinchiná', 'Palestina','Salamina.', 'La Merced','Marquetalia', 'Supia',
+    'Samaná', 'Marulanda', 'Pensilvania', 'La Dorada', 'Manzanares', 'Norcasia', 'Chinchiná', 'Palestina', 'Salamina.', 'La Merced', 'Marquetalia', 'Supia',
     //Mps Santander
-    'Bucaramanga', 'Lebrija', 'Girón', 'Puente Nacional', 'San Vicente de Chucurí', 'Jesús María', 'La Pazz', 'Simacota', 'Vélez','Socorro','Floridablanca','Barrancabermeja','Cimitarra', 'Barbosa',
+    'Bucaramanga', 'Lebrija', 'Girón', 'Puente Nacional', 'San Vicente de Chucurí', 'Jesús María', 'La Pazz', 'Simacota', 'Vélez', 'Socorro', 'Floridablanca', 'Barrancabermeja', 'Cimitarra', 'Barbosa',
     //Mps Risaralda
     'Dosquebradas', 'Pereira', 'Santa Rosa De Cabal',
     //Mps Meta
-    'Villavicencio','Puerto López',
+    'Villavicencio', 'Puerto López',
     //Mps Antioquia
     'Medellín', 'Bello', 'San Juan De Urabá', 'San Pedro De Urabá', 'Arboletes', 'Necoclí',
     //Mps Putumayo
-    'Valle Del Guamuez', 'Mocoa', 'Sibundoy','Villagarzón',
+    'Valle Del Guamuez', 'Mocoa', 'Sibundoy', 'Villagarzón',
     //mps Quindio
     'Armenia', 'Circasia',
     //Mps Nariño
-    'Pasto', 'Ipiales', 'Leiva','La Uniónnn', 
+    'Pasto', 'Ipiales', 'Leiva', 'La Uniónnn',
     //Mps Sucre
     'La Uniónn',
     //Mps Cordoba
     'Montería', 'Pueblo Nuevo',
     //Mps Boyacá
-    'Saboyá', 'Chiquinquirá', 'Guateque', 'Macanal', 'Chivor', 'Tausa', 'Tenza', 'Sutatenza',
+    'Saboyá', 'Chiquinquirá', 'Guateque', 'Macanal', 'Chivor', 'Tenza', 'Sutatenza',
     //Mps Cundinamarca
     'Chocontá', 'Bogotá', 'Machetá', 'San Antonio Del Tequendama', 'Suesca', 'Zipaquirá', 'Tibirita', 'Supatá',
-    'Ubalá', 'Chipaque', 'Cajicá', 'Cogua', 'Nemocón', 'Tocancipá', 'Zipaquirá', 'Zipacón', 'La Mesa', 'Cachipay',
-    'Tena', 'Tausa', 'Fusagasugá', 'Girardot', 'Sibaté', 'Silvania', 'La Mesa', 'Soacha', 'Sopó', 'Tibacuy', 'Granadaa',
+    'Ubalá', 'Chipaque', 'Cajicá', 'Cogua', 'Nemocón', 'Tocancipá', 'Zipacón', 'La Mesa', 'Cachipay',
+    'Tena', 'Tausa', 'Fusagasugá', 'Girardot', 'Sibaté', 'Silvania', 'Soacha', 'Sopó', 'Tibacuy', 'Granadaa',
 ];
 
 // variable de renderizado en canvas
-var CanvasRender = L.canvas();
+var CanvasRenderMunicipios = L.canvas();
+var CanvasRenderDepartamentos = L.canvas()
 
 
 //Fubción para definir estilos de la capa Geojson de departamentos intervenidos:
 function styles(feature) {
     return {
         color: '#020e189d',
-        fillColor: '#002f559d',
+        fillColor: '#002f55e9',
         weight: 1,
         opacity: 1,
-        fillOpacity: 0.6,
+        fillOpacity: 0.4,
         dashArray: '2'
     };
 }
@@ -75,8 +76,8 @@ fetch('./data/DepartamentosOp.geojson')
     .then(data => {
         console.log(data);
         L.geoJSON(data, {
-            renderer: CanvasRender, // Usar el renderer de canvas
-            // pane: 'departamento', // Asignar al pane de departamentos
+            renderer: CanvasRenderDepartamentos, // Usar el renderer de canvas
+            pane: 'departamento', // Asignar al pane de departamentos
             style: {
                 color: '#002f559d',
                 weight: 1,
@@ -151,7 +152,8 @@ fetch('./data/Dep.geojson')
 
         geojson = L.geoJSON(data, {
             style: styles,
-            onEachFeature: onEachFeature
+            onEachFeature: onEachFeature,
+            pane: 'departamento', // Asignar al pane de departamentos
         })
             //  .bindPopup(function (layer) {
             //      return "Departamento: " + layer.feature.properties.DeNombre + "<br>" +
@@ -237,19 +239,20 @@ legend.onAdd = function (map) {
     <h4>Área Intervenida</h4>
     <section/>
     <div class="legend-item">
+    <i class="bi bi-grid-3x3 me-2 fs-6"></i>
             <span class="legend-text">30.926.175 Predios intervenidos</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background-color: #002F55; opacity: 0.8;"></span>
-            <span class="legend-text">1.926.175 Hectáreas</span>
+            <i class="bi bi-globe-americas me-2 fs-6"></i>
+            <span class="legend-text">1.926.175 Has Intervenidas</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background-color: #002f559d; opacity: 0.8; border: 1px solid #000;"></span>
+            <span class="legend-color" style="background-color: #002f559d; opacity: 1; border: 1px solid #000;"></span>
             <span class="legend-text">15 Departamentos</span>
         </div>
         <div class="legend-item">
             <span class="legend-color" style="background-color: #FFC107; border: 1px solid #000;"></span>
-            <span class="legend-text">35 Municipios</span>
+            <span class="legend-text">103 Municipios</span>
         </div>
     `;
 
@@ -285,7 +288,7 @@ infoControl.update = function (props) {
             .join('');
 
         this._div.innerHTML = '<h4 class="info-control-title">Municipios intervenidos</h4>' +
-            '<b class="info-control-departamento">' + props.DeNombre + '</b><br />' +
+            '<b class="info-control-departamento">Dpt: ' + props.DeNombre + '</b><br />' +
             '<ul style="margin: 10px 0; list-style: none; padding-left: 0;">' + listaMunicipios + '</ul>';
     } else {
         this._div.innerHTML = '<h4 class="info-control-title">Municipios intervenidos</h4>' +
@@ -300,6 +303,12 @@ infoControl.addTo(mapa);
 // ---------------------------------------------------------------
 
 var HomeButton = L.control({ position: 'topleft' });
+L.control.scale({
+    position: 'bottomright',
+    maxWidth: 150,
+    metric: true,
+    imperial: false
+}).addTo(mapa);
 
 HomeButton.onAdd = function (map) {
     var button = L.DomUtil.create('button', 'btn btn-light border shadow btn-sm');
@@ -349,8 +358,8 @@ MunicipalButton.onAdd = function (map) {
                     console.log(`Municipios filtrados: ${municipiosFiltrados.features.length} de ${dato.features.length}`);
 
                     capaMunicipios = L.geoJSON(municipiosFiltrados, {
-                        renderer: CanvasRender, // Usar el renderer de canvas
-                        // pane: 'municipio', // Asignar al pane de municipios
+                        renderer: CanvasRenderMunicipios, // Usar el renderer de canvas Municipios
+                        pane: 'municipio', // Asignar al pane de municipios
                         style: function (feature) {
                             return {
                                 color: "#000406ff",
