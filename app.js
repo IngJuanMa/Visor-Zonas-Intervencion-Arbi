@@ -76,7 +76,7 @@ fetch('./data/DepartamentosOp.geojson')
         console.log(data);
         L.geoJSON(data, {
             renderer: CanvasRender, // Usar el renderer de canvas
-            pane: 'departamento', // Asignar al pane de departamentos
+            // pane: 'departamento', // Asignar al pane de departamentos
             style: {
                 color: '#002f559d',
                 weight: 1,
@@ -350,7 +350,7 @@ MunicipalButton.onAdd = function (map) {
 
                     capaMunicipios = L.geoJSON(municipiosFiltrados, {
                         renderer: CanvasRender, // Usar el renderer de canvas
-                        pane: 'municipio', // Asignar al pane de municipios
+                        // pane: 'municipio', // Asignar al pane de municipios
                         style: function (feature) {
                             return {
                                 color: "#000406ff",
