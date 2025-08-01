@@ -1,19 +1,31 @@
 /* Estilos para la leyenda */
 .info {
     padding: 6px 8px;
-    font: 10px Arial, Helvetica, sans-serif;
     background: rgba(255, 255, 255, 0.818);
     box-shadow: 0 0 18px rgba(0,0,0,0.2);
     border-radius: 8px;
     border: 1px solid rgba(0,0,0,0.2);
+    font-family: 'Poppins', sans-serif;
 }
 
+.seccion-mapa {
+    font-family: 'Poppins', sans-serif;
+    background-image: 
+    url(back-relieve.png),
+        linear-gradient(180deg, #0123476d 20%, #020202 80%);
+    background-size: 105% auto, cover;
+    background-position: center;
+    background-attachment: fixed;  /* Efecto parallax opcional */
+    animation: moverBackground 12s ease-in-out infinite alternate;
+    color: #FEFEFE;
+    overflow-x: hidden;
+}
 
 .legend h4 {
     margin: 0 0 10px 0;
     color: #002F55;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
 }
@@ -21,7 +33,7 @@
 .legend-item {
     display: flex;
     align-items: center;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.5em;
 }
 
 .legend-color {
@@ -33,13 +45,14 @@
 }
 
 .legend-text {
-    font-size: 13px;
+    font-size: 11px;
     color: #333;
+    text-align: center;
 }
 
 .info-control{
     padding: 6px 8px;
-    font: 10px Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: rgba(255, 255, 255, 0.819);
     box-shadow: 0 0 18px rgba(0,0,0,0.2);
     border-radius: 8px;
@@ -47,24 +60,78 @@
 }
 
 .info-control-title{
-    margin: 0 0 10px 0;
-    font-size: 1.6em;
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
     font-weight: bold;
     color: #002F55;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 .info-control-departamento {
-    font-size: 1.5em;
+    font-size: 1em;
     color: #002F55;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.1em;
     font-weight: bold;
-    
+    text-align: center;
 }
 
 .info-control-Listitem{
-    font-size: 1.3em;
+    font-size: 0.8em;
     color: #111111;
-    margin-bottom: 0.2em;
+}
+
+
+.kpi-card {
+    transition: transform 0.3s ease; 
+    cursor: pointer;
+}
+.kpi-card:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes moverBackground {
+  0% {
+    background-position: center left;
+  }
+  100% {
+    background-position: center right;
+  }
+}
+
+.animacion-pulso {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Efecto de glow adicional */
+.glow-effect {
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.8);
+}
+
+.header-mapa{
+    background-color: #0f5699ee;
+    background-image: url(logoBack.png);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: right ;
+
 }

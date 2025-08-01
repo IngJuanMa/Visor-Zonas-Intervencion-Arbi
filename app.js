@@ -1,4 +1,4 @@
-var mapa = L.map('mapa', { preferCanvas: true }).setView([4.5709, -74.2973], 5);
+var mapa = L.map('mapa', { preferCanvas: true }).setView([4.5709, -74.2973], 6);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
@@ -239,12 +239,12 @@ legend.onAdd = function (map) {
     <h4>Área Intervenida</h4>
     <section/>
     <div class="legend-item">
-    <i class="bi bi-grid-3x3 me-2 fs-6"></i>
-            <span class="legend-text">30.926.175 Predios intervenidos</span>
+    <i class="bi bi-grid-3x3 me-2 fs-6" style="color: #002f55ff;"></i>
+            <span class="legend-text">160.000 Predios</span>
         </div>
         <div class="legend-item">
-            <i class="bi bi-globe-americas me-2 fs-6"></i>
-            <span class="legend-text">1.926.175 Has Intervenidas</span>
+            <i class="bi bi-globe-americas me-2 fs-6" style="color: #002f55ff;"></i>
+            <span class="legend-text">2.000.000 Has</span>
         </div>
         <div class="legend-item">
             <span class="legend-color" style="background-color: #002f559d; opacity: 1; border: 1px solid #000;"></span>
@@ -289,7 +289,7 @@ infoControl.update = function (props) {
 
         this._div.innerHTML = '<h4 class="info-control-title">Municipios intervenidos</h4>' +
             '<b class="info-control-departamento">Dpt: ' + props.DeNombre + '</b><br />' +
-            '<ul style="margin: 10px 0; list-style: none; padding-left: 0;">' + listaMunicipios + '</ul>';
+            '<ul style="margin: 10px 0; list-style: none; padding-left: 0;text-align: center;">' + listaMunicipios + '</ul>';
     } else {
         this._div.innerHTML = '<h4 class="info-control-title">Municipios intervenidos</h4>' +
             ' <p class="info-control-Listitem">Pasa el mouse sobre un departamento</p>';
